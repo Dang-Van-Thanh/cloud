@@ -55,92 +55,119 @@ FastFoodStore/
 │   │   ├── AppUser.cs                        # Người dùng (kế thừa IdentityUser)
 │   │   ├── Food.cs                           # Món ăn
 │   │   ├── Order.cs                          # Đơn hàng
-│   │   ├── OrderItem.cs                      # Món trong đơn hàng
-│   │   ├── CartItem.cs                       # Món trong giỏ hàng
-│   │   └── Role.cs                           # Role (nếu dùng riêng)
-│   │
-│   ├── Interfaces/                           # 🔌 Interface cho Repository (không phụ thuộc công nghệ)
-│   │   ├── IUserRepository.cs
-│   │   ├── IFoodRepository.cs
-│   │   └── IOrderRepository.cs
-│   │
-│   └── ValueObjects/                         # 🔒 Kiểu giá trị đặc biệt (nếu dùng)
-│       └── Email.cs                          # Email dưới dạng kiểu riêng (tuỳ chọn)
+│   │   ├── OrderItem.cs                      # Chi tiết món trong đơn
+│   │   ├── CartItem.cs                       # Món trong giỏ hàng tạm thời
+│   │   └── Role.cs                           # Role người dùng (nếu quản lý riêng)
+│   ├── Interfaces/                           # 🔌 Các interface Repository tương ứng Entity
+│   │   ├── IUserRepository.cs                # Interface cho thao tác người dùng
+│   │   ├── IFoodRepository.cs                # Interface cho thao tác món ăn
+│   │   └── IOrderRepository.cs               # Interface cho thao tác đơn hàng
+│   └── ValueObjects/                         # 🔒 Các kiểu giá trị bất biến, validate riêng
+│       └── Email.cs                          # Kiểu Email hợp lệ (tuỳ chọn mở rộng)
 │
 ├── FastFoodStore.Application/                # 💼 Tầng Application: xử lý logic nghiệp vụ
-│   ├── Interfaces/                           # 🔌 Interface cho Services (kết nối tầng Domain)
-│   │   ├── IUserService.cs
-│   │   ├── IFoodService.cs
-│   │   └── IOrderService.cs
-│   │
-│   ├── Services/                             # ⚙️ Lớp triển khai nghiệp vụ chính (dùng domain + repo)
-│   │   ├── UserService.cs
-│   │   ├── FoodService.cs
-│   │   └── OrderService.cs
-│   │
-│   └── ViewModels/                           # 🪞 Dữ liệu truyền giữa Controller ↔ View
-│       ├── LoginViewModel.cs
-│       ├── RegisterViewModel.cs
-│       ├── FoodViewModel.cs
-│       ├── OrderViewModel.cs
-│       ├── CartViewModel.cs
-│       └── UserViewModel.cs
+│   ├── Interfaces/                           # 🔌 Các interface service gọi từ controller
+│   │   ├── IUserService.cs                   # Định nghĩa chức năng người dùng
+│   │   ├── IFoodService.cs                   # Định nghĩa chức năng món ăn
+│   │   └── IOrderService.cs                  # Định nghĩa chức năng đơn hàng
+│   ├── Services/                             # ⚙️ Các lớp hiện thực interface service
+│   │   ├── UserService.cs                    # Xử lý người dùng, đăng ký, đăng nhập
+│   │   ├── FoodService.cs                    # Xử lý CRUD món ăn
+│   │   └── OrderService.cs                   # Xử lý tạo và quản lý đơn hàng
+│   └── ViewModels/                           # 🪞 Lớp mô hình hiển thị dữ liệu cho View
+│       ├── LoginViewModel.cs                 # Thông tin đăng nhập
+│       ├── RegisterViewModel.cs              # Thông tin đăng ký
+│       ├── FoodViewModel.cs                  # Hiển thị thông tin món ăn
+│       ├── OrderViewModel.cs                 # Hiển thị đơn hàng và chi tiết
+│       ├── CartViewModel.cs                  # Hiển thị giỏ hàng người dùng
+│       └── UserViewModel.cs                  # Thông tin người dùng hiển thị admin/user
 │
-├── FastFoodStore.Infrastructure/            # 🏗️ Tầng hạ tầng: EF, DbContext, triển khai Repository
+├── FastFoodStore.Infrastructure/            # 🏗️ Tầng hạ tầng: triển khai kỹ thuật cụ thể
 │   ├── Data/
-│   │   ├── ApplicationDbContext.cs           # DbContext chính
-│   │   └── Migrations/                       # EF Migrations
-│   │       ├── ... .cs
-│   │
-│   ├── Repositories/                         # 💾 Repository pattern triển khai
+│   │   ├── ApplicationDbContext.cs           # DbContext chứa DbSet<Entity>
+│   │   └── Migrations/                       # 📜 EF Core migration
+│   │       ├── 20230618094512_InitialCreate.cs
+│   │       ├── 20230618094512_InitialCreate.Designer.cs
+│   │       └── ApplicationDbContextModelSnapshot.cs
+│   ├── Repositories/                         # 💾 Triển khai interface Repository
 │   │   ├── UserRepository.cs
 │   │   ├── FoodRepository.cs
 │   │   └── OrderRepository.cs
-│   │
-│   └── Identity/                             # 🔐 Cấu hình Identity, xác thực
-│       └── IdentitySeeder.cs                 # Seed dữ liệu mặc định (Admin, Role)
+│   └── Identity/
+│       └── IdentitySeeder.cs                 # Seed tài khoản Admin, phân quyền
 │
-├── FastFoodStore.WebUI/                      # 🌐 Tầng giao diện ASP.NET MVC (Presentation Layer)
+├── FastFoodStore.WebUI/                      # 🌐 Tầng trình bày (ASP.NET Core MVC)
 │   ├── Areas/
-│   │   └── Admin/
+│   │   └── Admin/                            # Khu vực quản trị
 │   │       ├── Controllers/
-│   │       │   ├── HomeController.cs
-│   │       │   ├── AppUsersController.cs
-│   │       │   ├── FoodsController.cs
-│   │       │   └── OrdersController.cs
-│   │       │
+│   │       │   ├── HomeController.cs         # Trang dashboard admin
+│   │       │   ├── AppUsersController.cs     # Quản lý người dùng
+│   │       │   ├── FoodsController.cs        # Quản lý món ăn
+│   │       │   └── OrdersController.cs       # Quản lý đơn hàng
 │   │       └── Views/
-│   │           ├── Home/Index.cshtml
+│   │           ├── Home/
+│   │           │   └── Index.cshtml          # Trang tổng quan admin
 │   │           ├── AppUsers/
+│   │           │   ├── Index.cshtml          # Danh sách người dùng
+│   │           │   ├── Create.cshtml         # Thêm người dùng
+│   │           │   ├── Edit.cshtml           # Chỉnh sửa người dùng
+│   │           │   └── Details.cshtml        # Thông tin chi tiết
 │   │           ├── Foods/
+│   │           │   ├── Index.cshtml          # Danh sách món ăn
+│   │           │   ├── Create.cshtml         # Thêm món ăn
+│   │           │   ├── Edit.cshtml           # Chỉnh sửa món ăn
+│   │           │   └── Details.cshtml        # Xem chi tiết món ăn
 │   │           └── Orders/
-│   │
+│   │               ├── Index.cshtml          # Danh sách đơn hàng
+│   │               └── Details.cshtml        # Chi tiết đơn hàng
 │   ├── Controllers/
-│   │   ├── HomeController.cs
-│   │   ├── AccountController.cs
-│   │   ├── FoodsController.cs
-│   │   ├── OrdersController.cs
-│   │   └── CartController.cs
-│   │
+│   │   ├── HomeController.cs                 # Trang chủ user
+│   │   ├── AccountController.cs              # Đăng nhập, đăng ký, tài khoản user
+│   │   ├── FoodsController.cs                # Hiển thị danh sách món ăn cho user
+│   │   ├── OrdersController.cs               # Đặt và xem đơn hàng
+│   │   └── CartController.cs                 # Giỏ hàng
 │   ├── Views/
-│   │   ├── Shared/                           # Layout chung
+│   │   ├── Shared/                           # Layout và các phần dùng chung
+│   │   │   ├── _Layout.cshtml                # Giao diện tổng thể (menu, header, footer)
+│   │   │   ├── _ValidationScriptsPartial.cshtml # Hỗ trợ validate client
+│   │   │   └── Error.cshtml                  # Trang lỗi chung
 │   │   ├── Home/
+│   │   │   ├── Index.cshtml                  # Trang chủ
+│   │   │   ├── About.cshtml                  # Giới thiệu cửa hàng
+│   │   │   └── Contact.cshtml                # Thông tin liên hệ
 │   │   ├── Account/
+│   │   │   ├── Login.cshtml                  # Đăng nhập
+│   │   │   ├── Register.cshtml               # Đăng ký tài khoản
+│   │   │   ├── ForgotPassword.cshtml         # Quên mật khẩu
+│   │   │   ├── ResetPassword.cshtml          # Đặt lại mật khẩu
+│   │   │   └── Profile.cshtml                # Cập nhật thông tin cá nhân
 │   │   ├── Foods/
+│   │   │   ├── Index.cshtml                  # Danh sách món ăn
+│   │   │   ├── Details.cshtml                # Chi tiết món ăn
+│   │   │   └── SearchResults.cshtml          # Kết quả tìm kiếm
 │   │   ├── Orders/
+│   │   │   ├── Index.cshtml                  # Danh sách đơn hàng người dùng
+│   │   │   ├── Details.cshtml                # Chi tiết đơn
+│   │   │   ├── Create.cshtml                 # Trang đặt đơn hàng
+│   │   │   ├── Checkout.cshtml               # Thanh toán
+│   │   │   └── OrderConfirmation.cshtml      # Xác nhận đơn thành công
 │   │   └── Cart/
-│   │
-│   ├── wwwroot/                              # 📁 Tệp tĩnh (CSS, JS, ảnh)
+│   │       ├── Index.cshtml                  # Xem giỏ hàng
+│   │       └── Update.cshtml                 # Cập nhật số lượng hoặc xóa
+│   ├── wwwroot/                              # 📁 File tĩnh (JS, CSS, ảnh)
 │   │   ├── css/
+│   │   │   ├── site.css
+│   │   │   └── bootstrap.min.css
 │   │   ├── js/
+│   │   │   ├── site.js
+│   │   │   └── bootstrap.bundle.min.js
 │   │   └── images/
-│   │
-│   ├── appsettings.json
-│   ├── Program.cs
-│   └── FastFoodStore.WebUI.csproj
-│
-├── FastFoodStore.sln                         # 🔧 Solution file liên kết tất cả project
-└── README.md                                 # 📘 Hướng dẫn sử dụng dự án
+│   │       └── logo.png
+│   ├── appsettings.json                      # Cấu hình kết nối DB, JWT, v.v.
+│   ├── Program.cs                            # Điểm khởi đầu app
+│   └── FastFoodStore.WebUI.csproj            # File project MVC
+├── FastFoodStore.sln                         # 🔧 Tập tin solution .NET
+└── README.md                                 # 📘 Tài liệu hướng dẫn dự án
 
 ```
 ```
