@@ -1,4 +1,53 @@
 ```
+# 📁 Tạo thư mục gốc
+mkdir FastFoodStore
+cd FastFoodStore
+
+# 🧱 Tạo solution file (.sln)
+dotnet new sln -n FastFoodStore
+
+# 📦 Tạo các dự án con
+dotnet new classlib -n FastFoodStore.Domain
+dotnet new classlib -n FastFoodStore.Application
+dotnet new classlib -n FastFoodStore.Infrastructure
+dotnet new mvc      -n FastFoodStore.WebUI
+
+# Thêm dự án vào solution
+dotnet sln add FastFoodStore.Domain/FastFoodStore.Domain.csproj
+dotnet sln add FastFoodStore.Application/FastFoodStore.Application.csproj
+dotnet sln add FastFoodStore.Infrastructure/FastFoodStore.Infrastructure.csproj
+dotnet sln add FastFoodStore.WebUI/FastFoodStore.WebUI.csproj
+
+# Thêm tham chiếu giữa các dự án (project reference)
+# Application cần dùng Domain
+dotnet add FastFoodStore.Application/FastFoodStore.Application.csproj reference FastFoodStore.Domain/FastFoodStore.Domain.csproj
+
+# Infrastructure cần dùng Domain
+dotnet add FastFoodStore.Infrastructure/FastFoodStore.Infrastructure.csproj reference FastFoodStore.Domain/FastFoodStore.Domain.csproj
+
+# WebUI cần dùng cả 3 lớp còn lại
+dotnet add FastFoodStore.WebUI/FastFoodStore.WebUI.csproj reference FastFoodStore.Application/FastFoodStore.Application.csproj
+dotnet add FastFoodStore.WebUI/FastFoodStore.WebUI.csproj reference FastFoodStore.Domain/FastFoodStore.Domain.csproj
+dotnet add FastFoodStore.WebUI/FastFoodStore.WebUI.csproj reference FastFoodStore.Infrastructure/FastFoodStore.Infrastructure.csproj
+
+# Chạy thử ứng dụng
+cd FastFoodStore.WebUI
+dotnet run
+
+# Cài gói EF (thực hiện một lần):
+dotnet add FastFoodStore.Infrastructure package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add FastFoodStore.Infrastructure package Microsoft.EntityFrameworkCore.Design
+
+# Tạo migration & cập nhật DB:
+# Từ thư mục Infrastructure
+dotnet ef migrations add InitialCreate --project FastFoodStore.Infrastructure \
+                                       --startup-project ../FastFoodStore.WebUI
+dotnet ef database update --project FastFoodStore.Infrastructure \
+                           --startup-project ../FastFoodStore.WebUI
+# Cập nhật DB(nếu cần)
+dotnet ef database update
+```
+```
 FastFoodStore/
 │
 ├── FastFoodStore.Domain/                     # 📦 Tầng Domain: nghiệp vụ cốt lõi
