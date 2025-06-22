@@ -1,6 +1,102 @@
 ```
 FastFoodStore/
 │
+├── FastFoodStore.Domain/                     # 📦 Tầng Domain: nghiệp vụ cốt lõi
+│   ├── Entities/                             # 🧱 Các thực thể (Entity) - ánh xạ DB
+│   │   ├── AppUser.cs                        # Người dùng (kế thừa IdentityUser)
+│   │   ├── Food.cs                           # Món ăn
+│   │   ├── Order.cs                          # Đơn hàng
+│   │   ├── OrderItem.cs                      # Món trong đơn hàng
+│   │   ├── CartItem.cs                       # Món trong giỏ hàng
+│   │   └── Role.cs                           # Role (nếu dùng riêng)
+│   │
+│   ├── Interfaces/                           # 🔌 Interface cho Repository (không phụ thuộc công nghệ)
+│   │   ├── IUserRepository.cs
+│   │   ├── IFoodRepository.cs
+│   │   └── IOrderRepository.cs
+│   │
+│   └── ValueObjects/                         # 🔒 Kiểu giá trị đặc biệt (nếu dùng)
+│       └── Email.cs                          # Email dưới dạng kiểu riêng (tuỳ chọn)
+│
+├── FastFoodStore.Application/                # 💼 Tầng Application: xử lý logic nghiệp vụ
+│   ├── Interfaces/                           # 🔌 Interface cho Services (kết nối tầng Domain)
+│   │   ├── IUserService.cs
+│   │   ├── IFoodService.cs
+│   │   └── IOrderService.cs
+│   │
+│   ├── Services/                             # ⚙️ Lớp triển khai nghiệp vụ chính (dùng domain + repo)
+│   │   ├── UserService.cs
+│   │   ├── FoodService.cs
+│   │   └── OrderService.cs
+│   │
+│   └── ViewModels/                           # 🪞 Dữ liệu truyền giữa Controller ↔ View
+│       ├── LoginViewModel.cs
+│       ├── RegisterViewModel.cs
+│       ├── FoodViewModel.cs
+│       ├── OrderViewModel.cs
+│       ├── CartViewModel.cs
+│       └── UserViewModel.cs
+│
+├── FastFoodStore.Infrastructure/            # 🏗️ Tầng hạ tầng: EF, DbContext, triển khai Repository
+│   ├── Data/
+│   │   ├── ApplicationDbContext.cs           # DbContext chính
+│   │   └── Migrations/                       # EF Migrations
+│   │       ├── ... .cs
+│   │
+│   ├── Repositories/                         # 💾 Repository pattern triển khai
+│   │   ├── UserRepository.cs
+│   │   ├── FoodRepository.cs
+│   │   └── OrderRepository.cs
+│   │
+│   └── Identity/                             # 🔐 Cấu hình Identity, xác thực
+│       └── IdentitySeeder.cs                 # Seed dữ liệu mặc định (Admin, Role)
+│
+├── FastFoodStore.WebUI/                      # 🌐 Tầng giao diện ASP.NET MVC (Presentation Layer)
+│   ├── Areas/
+│   │   └── Admin/
+│   │       ├── Controllers/
+│   │       │   ├── HomeController.cs
+│   │       │   ├── AppUsersController.cs
+│   │       │   ├── FoodsController.cs
+│   │       │   └── OrdersController.cs
+│   │       │
+│   │       └── Views/
+│   │           ├── Home/Index.cshtml
+│   │           ├── AppUsers/
+│   │           ├── Foods/
+│   │           └── Orders/
+│   │
+│   ├── Controllers/
+│   │   ├── HomeController.cs
+│   │   ├── AccountController.cs
+│   │   ├── FoodsController.cs
+│   │   ├── OrdersController.cs
+│   │   └── CartController.cs
+│   │
+│   ├── Views/
+│   │   ├── Shared/                           # Layout chung
+│   │   ├── Home/
+│   │   ├── Account/
+│   │   ├── Foods/
+│   │   ├── Orders/
+│   │   └── Cart/
+│   │
+│   ├── wwwroot/                              # 📁 Tệp tĩnh (CSS, JS, ảnh)
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   │
+│   ├── appsettings.json
+│   ├── Program.cs
+│   └── FastFoodStore.WebUI.csproj
+│
+├── FastFoodStore.sln                         # 🔧 Solution file liên kết tất cả project
+└── README.md                                 # 📘 Hướng dẫn sử dụng dự án
+
+```
+```
+FastFoodStore/
+│
 ├── Areas/
 │   └── Admin/
 │       ├── Controllers/
