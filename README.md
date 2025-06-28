@@ -1,4 +1,143 @@
 ```
+FastFoodShop/
+│
+├── Areas/
+│   └── Admin/
+│       ├── Controllers/
+│       │   ├── HomeController.cs            # Dashboard Admin
+│       │   ├── AppUsersController.cs        # Quản lý người dùng
+│       │   ├── FoodsController.cs           # Quản lý món ăn
+│       │   └── OrdersController.cs          # Quản lý đơn hàng
+│       │
+│       ├── Views/
+│       │   ├── Shared/
+│       │   │   └── _Layout.cshtml           # Layout riêng cho Admin
+│       │   ├── Home/
+│       │   │   └── Index.cshtml             # Trang Dashboard
+│       │   ├── AppUsers/
+│       │   │   ├── Index.cshtml
+│       │   │   ├── Create.cshtml
+│       │   │   ├── Edit.cshtml
+│       │   │   └── Details.cshtml
+│       │   ├── Foods/
+│       │   │   ├── Index.cshtml
+│       │   │   ├── Create.cshtml
+│       │   │   ├── Edit.cshtml
+│       │   │   └── Details.cshtml
+│       │   └── Orders/
+│       │       ├── Index.cshtml
+│       │       └── Details.cshtml
+│
+├── Controllers/
+│   ├── HomeController.cs                    # Trang chủ người dùng
+│   ├── AccountController.cs                 # Đăng nhập, đăng ký, hồ sơ cá nhân
+│   ├── FoodsController.cs                   # Xem danh sách và chi tiết món ăn
+│   ├── OrdersController.cs                  # Tạo và xem đơn hàng người dùng
+│   └── CartController.cs                    # Giỏ hàng
+│
+├── Models/
+│   ├── AppUser.cs                           # Mở rộng từ IdentityUser
+│   ├── Food.cs
+│   ├── Order.cs
+│   ├── OrderItem.cs
+│   ├── CartItem.cs
+│   ├── LoginViewModel.cs
+│   ├── RegisterViewModel.cs
+│   └── Role.cs                              # Nếu quản lý role riêng
+│
+├── ViewModels/
+│   ├── FoodViewModel.cs
+│   ├── OrderViewModel.cs
+│   ├── CartViewModel.cs
+│   ├── UserViewModel.cs
+│   └── AdminDashboardViewModel.cs
+│
+├── Services/
+│   ├── Interfaces/
+│   │   ├── IUserService.cs
+│   │   ├── IFoodService.cs
+│   │   └── IOrderService.cs
+│   ├── UserService.cs
+│   ├── FoodService.cs
+│   └── OrderService.cs
+│
+├── Data/
+│   ├── ApplicationDbContext.cs              # DbContext chính
+│   └── Migrations/
+│       ├── 20230618094512_InitialCreate.cs
+│       ├── 20230618094512_InitialCreate.Designer.cs
+│       └── ApplicationDbContextModelSnapshot.cs
+│
+├── Views/
+│   ├── Shared/
+│   │   ├── _Layout.cshtml                  # Layout chính cho user
+│   │   ├── _LoginPartial.cshtml            # Hiển thị khi đã đăng nhập
+│   │   ├── _ValidationScriptsPartial.cshtml
+│   │   ├── Error.cshtml
+│   │   ├── NotFound.cshtml                 # Lỗi 404
+│   │   └── ServerError.cshtml              # Lỗi 500
+│   │
+│   ├── Home/
+│   │   ├── Index.cshtml
+│   │   ├── About.cshtml
+│   │   └── Contact.cshtml
+│   │
+│   ├── Account/
+│   │   ├── Login.cshtml
+│   │   ├── Register.cshtml
+│   │   ├── ForgotPassword.cshtml
+│   │   ├── ResetPassword.cshtml
+│   │   └── Profile.cshtml
+│   │
+│   ├── Foods/
+│   │   ├── Index.cshtml
+│   │   ├── Details.cshtml
+│   │   └── SearchResults.cshtml
+│   │
+│   ├── Orders/
+│   │   ├── Index.cshtml
+│   │   ├── Details.cshtml
+│   │   ├── Create.cshtml
+│   │   ├── Checkout.cshtml
+│   │   └── OrderConfirmation.cshtml
+│   │
+│   ├── Cart/
+│   │   ├── Index.cshtml
+│   │   └── Update.cshtml
+│   │
+│   └── Error/
+│       └── AccessDenied.cshtml
+│
+├── wwwroot/
+│   ├── css/
+│   │   ├── site.css
+│   │   └── bootstrap.min.css
+│   ├── js/
+│   │   ├── site.js
+│   │   └── bootstrap.bundle.min.js
+│   ├── images/
+│   │   └── logo.png
+│   └── lib/
+│       ├── jquery/
+│       │   └── jquery.min.js
+│       └── bootstrap/
+│           ├── css/
+│           │   └── bootstrap.min.css
+│           └── js/
+│               └── bootstrap.bundle.min.js
+│
+├── Properties/
+│   └── launchSettings.json
+│
+├── appsettings.json
+├── appsettings.Development.json
+├── Program.cs
+├── FastFoodShop.csproj
+├── Startup.cs                     # (nếu dùng .NET 5 hoặc thấp hơn)
+└── README.md
+
+```
+```
 # 📁 Tạo thư mục gốc
 mkdir FastFoodStore
 cd FastFoodStore
