@@ -1,4 +1,270 @@
 ```
+FastFoodStoreOnline/
+│
+├── Areas/
+│   └── Admin/
+│       ├── Controllers/
+│       │   ├── HomeController.cs
+│       │   ├── AppUsersController.cs
+│       │   ├── FoodsController.cs
+│       │   ├── OrdersController.cs
+│       │   ├── CategoriesController.cs
+│       │   ├── StatisticsController.cs
+│       │   ├── PromotionsController.cs
+│       │   ├── InventoryController.cs
+│       │   └── CombosController.cs
+│       │
+│       ├── Views/
+│       │   ├── Shared/
+│       │   │   ├── _Layout.cshtml
+│       │   │   └── _AdminSidebar.cshtml
+│       │   ├── Home/
+│       │   │   └── Index.cshtml
+│       │   ├── Promotions/
+│       │   │   ├── Index.cshtml
+│       │   │   ├── Create.cshtml
+│       │   │   ├── Edit.cshtml
+│       │   │   └── Details.cshtml
+│       │   ├── Inventory/
+│       │   │   ├── Index.cshtml
+│       │   │   └── StockReport.cshtml
+│       │   └── Combos/
+│       │       ├── Index.cshtml
+│       │       ├── Create.cshtml
+│       │       ├── Edit.cshtml
+│       │       └── Details.cshtml
+│       │
+│       ├── Services/
+│       │   ├── AdminFoodService.cs
+│       │   ├── AdminOrderService.cs
+│       │   ├── AdminPromotionService.cs
+│       │   └── AdminComboService.cs
+│       │
+│       └── ViewModels/
+│           ├── AdminFoodVM.cs
+│           ├── AdminOrderVM.cs
+│           ├── DashboardVM.cs
+│           ├── PromotionVM.cs
+│           ├── InventoryReportVM.cs
+│           └── ComboVM.cs
+│
+├── Controllers/
+│   ├── HomeController.cs
+│   ├── AccountController.cs
+│   ├── FoodsController.cs
+│   ├── OrdersController.cs
+│   ├── CartController.cs
+│   ├── CategoriesController.cs
+│   ├── CheckoutController.cs
+│   ├── ReviewsController.cs
+│   └── PromotionsController.cs
+│
+├── Models/
+│   ├── Identity/
+│   │   ├── ApplicationUser.cs
+│   │   └── ApplicationRole.cs
+│   ├── Food.cs
+│   ├── Category.cs
+│   ├── Order.cs
+│   ├── OrderItem.cs
+│   ├── CartItem.cs
+│   ├── Address.cs
+│   ├── PaymentInfo.cs
+│   ├── Review.cs
+│   ├── Promotion.cs
+│   ├── Inventory.cs
+│   ├── Combo.cs
+│   ├── ComboItem.cs
+│   │
+│   ├── ViewModels/
+│   │   ├── Account/
+│   │   │   ├── LoginViewModel.cs
+│   │   │   ├── RegisterViewModel.cs
+│   │   │   └── ProfileViewModel.cs
+│   │   ├── Shopping/
+│   │   │   ├── CartViewModel.cs
+│   │   │   ├── CheckoutViewModel.cs
+│   │   │   └── OrderConfirmationViewModel.cs
+│   │   ├── ReviewViewModel.cs
+│   │   ├── ApplyCouponViewModel.cs
+│   │   └── ComboViewModel.cs
+│   │
+│   └── Enums/
+│       ├── OrderStatus.cs
+│       ├── PaymentMethod.cs
+│       ├── FoodSize.cs
+│       ├── PromotionType.cs
+│       └── InventoryStatus.cs
+│
+├── Services/
+│   ├── Interfaces/
+│   │   ├── IUserService.cs
+│   │   ├── IFoodService.cs
+│   │   ├── IOrderService.cs
+│   │   ├── ICartService.cs
+│   │   ├── ICategoryService.cs
+│   │   ├── IPaymentService.cs
+│   │   ├── IEmailService.cs
+│   │   ├── IReviewService.cs
+│   │   ├── IPromotionService.cs
+│   │   ├── IInventoryService.cs
+│   │   └── IComboService.cs
+│   │
+│   ├── Implementations/
+│   │   ├── UserService.cs
+│   │   ├── FoodService.cs
+│   │   ├── OrderService.cs
+│   │   ├── CartService.cs
+│   │   ├── CategoryService.cs
+│   │   ├── PaymentService.cs
+│   │   ├── EmailService.cs
+│   │   ├── ReviewService.cs
+│   │   ├── PromotionService.cs
+│   │   ├── InventoryService.cs
+│   │   └── ComboService.cs
+│   │
+│   ├── Repositories/
+│   │   ├── Base/
+│   │   │   └── IRepository.cs
+│   │   ├── FoodRepository.cs
+│   │   ├── OrderRepository.cs
+│   │   ├── UserRepository.cs
+│   │   ├── ReviewRepository.cs
+│   │   ├── PromotionRepository.cs
+│   │   └── InventoryRepository.cs
+│   │
+│   └── Helpers/
+│       ├── ImageUploader.cs
+│       ├── PaymentGatewayHelper.cs
+│       ├── ClaimsPrincipalExtensions.cs
+│       └── PromotionCalculator.cs
+│
+├── Data/
+│   ├── ApplicationDbContext.cs
+│   ├── DbInitializer.cs
+│   ├── Migrations/
+│   └── SeedData/
+│       ├── AdminUserSeeder.cs
+│       ├── CategorySeeder.cs
+│       ├── FoodSeeder.cs
+│       ├── PromotionSeeder.cs
+│       └── ComboSeeder.cs
+│
+├── Views/
+│   ├── Shared/
+│   │   ├── _Layout.cshtml
+│   │   ├── _Navbar.cshtml
+│   │   ├── _Footer.cshtml
+│   │   ├── _LoginPartial.cshtml
+│   │   ├── _ValidationScriptsPartial.cshtml
+│   │   ├── Error.cshtml
+│   │   ├── NotFound.cshtml
+│   │   └── ServerError.cshtml
+│   │
+│   ├── Home/
+│   │   ├── Index.cshtml
+│   │   ├── About.cshtml
+│   │   └── Contact.cshtml
+│   │
+│   ├── Account/
+│   │   ├── Login.cshtml
+│   │   ├── Register.cshtml
+│   │   ├── ForgotPassword.cshtml
+│   │   ├── ResetPassword.cshtml
+│   │   ├── Profile.cshtml
+│   │   └── ChangePassword.cshtml
+│   │
+│   ├── Foods/
+│   │   ├── Index.cshtml
+│   │   ├── Details.cshtml
+│   │   ├── SearchResults.cshtml
+│   │   ├── ByCategory.cshtml
+│   │   ├── _ReviewsPartial.cshtml
+│   │   └── AddReviewModal.cshtml
+│   │
+│   ├── Orders/
+│   │   ├── Index.cshtml
+│   │   ├── Details.cshtml
+│   │   ├── Create.cshtml
+│   │   ├── Checkout.cshtml
+│   │   ├── OrderConfirmation.cshtml
+│   │   └── Tracking.cshtml
+│   │
+│   ├── Cart/
+│   │   ├── Index.cshtml
+│   │   ├── AddToCart.cshtml
+│   │   └── MiniCart.cshtml
+│   │
+│   ├── Categories/
+│   │   └── Index.cshtml
+│   │
+│   ├── Promotions/
+│   │   ├── Index.cshtml
+│   │   └── ApplyCoupon.cshtml
+│   │
+│   ├── Combos/
+│   │   ├── Index.cshtml
+│   │   └── Details.cshtml
+│   │
+│   └── Error/
+│       └── AccessDenied.cshtml
+│
+├── wwwroot/
+│   ├── css/
+│   │   ├── site.css
+│   │   ├── admin.css
+│   │   ├── shopping.css
+│   │   └── responsive.css
+│   ├── js/
+│   │   ├── site.js
+│   │   ├── cart.js
+│   │   ├── checkout.js
+│   │   ├── food-filter.js
+│   │   ├── review.js
+│   │   └── coupon.js
+│   ├── images/
+│   │   ├── logo.png
+│   │   ├── foods/
+│   │   ├── banners/
+│   │   └── payments/
+│   ├── lib/
+│   │   ├── jquery/
+│   │   ├── bootstrap/
+│   │   ├── font-awesome/
+│   │   └── toastr/
+│   └── uploads/
+│       ├── foods/
+│       ├── combos/
+│       └── users/
+│
+├── Properties/
+│   └── launchSettings.json
+│
+├── Configurations/
+│   ├── AppSettings.cs
+│   ├── EmailSettings.cs
+│   ├── PaymentSettings.cs
+│   └── PromotionSettings.cs
+│
+├── Utilities/
+│   ├── Exceptions/
+│   │   ├── AppException.cs
+│   │   └── NotFoundException.cs
+│   ├── Extensions/
+│   │   ├── ClaimsPrincipalExtensions.cs
+│   │   └── StringExtensions.cs
+│   └── Formatters/
+│       └── CurrencyFormatter.cs
+│
+├── appsettings.json
+├── appsettings.Development.json
+├── Program.cs
+├── FastFoodStoreOnline.csproj
+├── GlobalUsings.cs
+├── README.md
+└── .gitignore
+```
+```
 FastFoodShop/
 │
 ├── Areas/
