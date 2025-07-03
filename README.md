@@ -5,74 +5,79 @@ FastFoodStoreOnline/
 │   └── Admin/
 │       ├── Controllers/
 │       │   ├── DashboardController.cs
-│       │   ├── FoodManagementController.cs
-│       │   ├── OrderManagementController.cs
-│       │   └── UserManagementController.cs
+│       │   ├── FoodController.cs
+│       │   ├── OrderController.cs
+│       │   └── UserController.cs
 │       ├── Views/
 │       │   ├── Dashboard/
 │       │   │   └── Index.cshtml
-│       │   ├── FoodManagement/
+│       │   ├── Food/
 │       │   │   ├── Index.cshtml
 │       │   │   ├── Create.cshtml
 │       │   │   ├── Edit.cshtml
 │       │   │   └── Delete.cshtml
-│       │   ├── OrderManagement/
+│       │   ├── Order/
 │       │   │   ├── Index.cshtml
-│       │   │   └── Detail.cshtml
-│       │   └── UserManagement/
+│       │   │   └── Details.cshtml
+│       │   └── User/
 │       │       ├── Index.cshtml
-│       │       ├── Edit.cshtml
-│       │       └── _UserActionsPartial.cshtml
+│       │       └── Edit.cshtml
 │       └── ViewModels/
-│           ├── FoodEditVM.cs
-│           └── UserRoleVM.cs
+│           ├── FoodVM.cs
+│           ├── OrderVM.cs
+│           └── UserVM.cs
 │
 ├── Controllers/
 │   ├── HomeController.cs
 │   ├── MenuController.cs
 │   ├── CartController.cs
-│   ├── OrderController.cs
+│   ├── CheckoutController.cs
 │   └── AccountController.cs
 │
 ├── Models/
 │   ├── Food.cs
-│   ├── CartItem.cs
+│   ├── Category.cs
 │   ├── Order.cs
-│   ├── OrderItem.cs
+│   ├── OrderDetail.cs
+│   ├── ShoppingCartItem.cs
 │   └── ApplicationUser.cs
 │
-├── ViewModels/
-│   ├── CartVM.cs
-│   ├── OrderCheckoutVM.cs
-│   └── UserProfileVM.cs
-│
 ├── Services/
-│   ├── CartService.cs
+│   ├── IFoodService.cs
+│   ├── FoodService.cs
+│   ├── IOrderService.cs
 │   ├── OrderService.cs
+│   ├── IUserService.cs
 │   └── UserService.cs
 │
 ├── Data/
-│   ├── AppDbContext.cs
+│   ├── ApplicationDbContext.cs
 │   └── DbInitializer.cs
+│
+├── ViewModels/
+│   ├── ShoppingCartVM.cs
+│   ├── CheckoutVM.cs
+│   └── MenuItemVM.cs
+│
+├── Utilities/
+│   ├── Constants.cs
+│   └── SD.cs  // Static Details
 │
 ├── wwwroot/
 │   ├── admin/
 │   │   ├── css/
-│   │   │   └── admin.css
-│   │   └── js/
-│   │       └── admin.js
+│   │   ├── js/
+│   │   └── img/
 │   ├── css/
-│   │   └── site.css
 │   ├── js/
-│   │   └── site.js
 │   └── images/
 │       ├── foods/
-│       └── users/
+│       └── banners/
 │
-├── Migrations/ (tự sinh)
+├── Migrations/
 │
-├── Program.cs
-└── appsettings.json
+├── appsettings.json
+└── Program.cs
 ```
 ```
 FastFoodStoreOnline/
