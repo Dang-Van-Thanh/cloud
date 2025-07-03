@@ -1,4 +1,68 @@
 ```
+FastFoodStore/
+│
+├── FastFoodStore.Web/                  # Giao diện người dùng (UI)
+│   ├── Controllers/
+│   │   ├── HomeController.cs
+│   │   ├── AccountController.cs
+│   │   ├── CartController.cs
+│   │   ├── OrderController.cs
+│   │   └── AdminController.cs
+│   ├── Views/
+│   │   ├── Shared/
+│   │   ├── Home/
+│   │   ├── Account/
+│   │   ├── Cart/
+│   │   ├── Order/
+│   │   └── Admin/
+│   ├── wwwroot/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   ├── appsettings.json
+│   ├── Program.cs
+│   └── FastFoodStore.Web.csproj
+│
+├── FastFoodStore.Application/         # Service (Xử lý logic)
+│   ├── Interfaces/
+│   │   ├── ICartService.cs
+│   │   ├── IFoodService.cs
+│   │   └── IOrderService.cs
+│   ├── Services/
+│   │   ├── CartService.cs
+│   │   ├── FoodService.cs
+│   │   └── OrderService.cs
+│   ├── ViewModels/
+│   │   ├── LoginViewModel.cs
+│   │   ├── RegisterViewModel.cs
+│   │   └── CartViewModel.cs
+│   └── FastFoodStore.Application.csproj
+│
+├── FastFoodStore.Domain/              # Domain (Mô hình dữ liệu)
+│   ├── Models/
+│   │   ├── ApplicationUser.cs
+│   │   ├── Food.cs
+│   │   ├── CartItem.cs
+│   │   ├── Order.cs
+│   │   └── OrderItem.cs
+│   ├── Enums/
+│   │   └── OrderStatus.cs
+│   └── FastFoodStore.Domain.csproj
+│
+├── FastFoodStore.Infrastructure/      # Cơ sở dữ liệu (DbContext)
+│   ├── Data/
+│   │   └── ApplicationDbContext.cs
+│   ├── Configurations/
+│   │   ├── FoodConfiguration.cs
+│   │   └── OrderConfiguration.cs
+│   ├── Seed/
+│   │   └── DbSeeder.cs
+│   └── FastFoodStore.Infrastructure.csproj
+│
+├── FastFoodStore.sln                  # Solution tổng
+└── README.md
+```
+```
 FastFoodStoreOnline/
 │
 ├── Areas/
