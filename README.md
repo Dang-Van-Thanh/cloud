@@ -1,4 +1,80 @@
 ```
+FastFoodStore/
+│
+├── Areas/
+│   └── Admin/
+│       ├── Controllers/
+│       │   ├── DashboardController.cs
+│       │   ├── FoodManagementController.cs
+│       │   ├── OrderManagementController.cs
+│       │   └── UserManagementController.cs
+│       ├── Views/
+│       │   ├── Dashboard/
+│       │   │   └── Index.cshtml
+│       │   ├── FoodManagement/
+│       │   │   ├── Index.cshtml
+│       │   │   ├── Create.cshtml
+│       │   │   ├── Edit.cshtml
+│       │   │   └── Delete.cshtml
+│       │   ├── OrderManagement/
+│       │   │   ├── Index.cshtml
+│       │   │   └── Detail.cshtml
+│       │   └── UserManagement/
+│       │       ├── Index.cshtml
+│       │       ├── Edit.cshtml
+│       │       └── _UserActionsPartial.cshtml
+│       └── ViewModels/
+│           ├── FoodEditVM.cs
+│           └── UserRoleVM.cs
+│
+├── Controllers/
+│   ├── HomeController.cs
+│   ├── MenuController.cs
+│   ├── CartController.cs
+│   ├── OrderController.cs
+│   └── AccountController.cs
+│
+├── Models/
+│   ├── Food.cs
+│   ├── CartItem.cs
+│   ├── Order.cs
+│   ├── OrderItem.cs
+│   └── ApplicationUser.cs
+│
+├── ViewModels/
+│   ├── CartVM.cs
+│   ├── OrderCheckoutVM.cs
+│   └── UserProfileVM.cs
+│
+├── Services/
+│   ├── CartService.cs
+│   ├── OrderService.cs
+│   └── UserService.cs
+│
+├── Data/
+│   ├── AppDbContext.cs
+│   └── DbInitializer.cs
+│
+├── wwwroot/
+│   ├── admin/
+│   │   ├── css/
+│   │   │   └── admin.css
+│   │   └── js/
+│   │       └── admin.js
+│   ├── css/
+│   │   └── site.css
+│   ├── js/
+│   │   └── site.js
+│   └── images/
+│       ├── foods/
+│       └── users/
+│
+├── Migrations/ (tự sinh)
+│
+├── Program.cs
+└── appsettings.json
+```
+```
 FastFoodStoreOnline/
 │
 ├── Areas/
