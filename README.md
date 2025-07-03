@@ -1,5 +1,5 @@
 ```
-FastFoodStore/
+FastFoodStoreOnline/
 │
 ├── Areas/
 │   └── Admin/
