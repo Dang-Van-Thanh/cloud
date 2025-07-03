@@ -1,6 +1,90 @@
 ```
 FastFoodStore/
 │
+├── Areas/
+│   └── Admin/
+│       ├── Controllers/
+│       │   ├── DashboardController.cs          # Trang thống kê quản trị
+│       │   ├── FoodController.cs               # Quản lý món ăn
+│       │   ├── OrderController.cs              # Quản lý đơn hàng
+│       │   └── UserController.cs               # Quản lý người dùng
+│       │
+│       ├── ViewModels/
+│       │   ├── DashboardViewModel.cs
+│       │   ├── FoodViewModel.cs
+│       │   ├── OrderAdminViewModel.cs
+│       │   └── UserViewModel.cs
+│       │
+│       └── Views/
+│           ├── Dashboard/
+│           │   └── Index.cshtml
+│           ├── Food/
+│           │   ├── Index.cshtml
+│           │   ├── Create.cshtml
+│           │   └── Edit.cshtml
+│           ├── Order/
+│           │   └── Index.cshtml
+│           └── User/
+│               └── Index.cshtml
+│
+├── Controllers/
+│   ├── HomeController.cs
+│   ├── AccountController.cs          # Đăng nhập, đăng ký
+│   ├── CartController.cs             # Giỏ hàng
+│   └── OrderController.cs            # Đặt hàng
+│
+├── Views/
+│   ├── Shared/
+│   │   ├── _Layout.cshtml
+│   │   ├── _ValidationScriptsPartial.cshtml
+│   │   └── _LoginPartial.cshtml
+│   ├── Home/
+│   │   └── Index.cshtml
+│   ├── Account/
+│   │   ├── Login.cshtml
+│   │   └── Register.cshtml
+│   ├── Cart/
+│   │   └── Index.cshtml
+│   └── Order/
+│       └── Checkout.cshtml
+│
+├── Models/
+│   ├── ApplicationUser.cs            # Kế thừa từ IdentityUser
+│   ├── Food.cs
+│   ├── Order.cs
+│   ├── OrderItem.cs
+│   └── CartItem.cs                
+│
+├── ViewModels/
+│   ├── RegisterViewModel.cs
+│   ├── LoginViewModel.cs
+│   ├── CartItemViewModel.cs
+│   ├── CartViewModel.cs
+│   └── OrderSummaryViewModel.cs
+│
+├── Data/
+│   ├── ApplicationDbContext.cs
+│   └── DbSeeder.cs                   # Tạo dữ liệu mặc định, seed admin
+│
+├── Utilities/
+│   └── SD.cs                         # Static Details: Role, Trạng thái, v.v.
+│
+├── wwwroot/
+│   ├── css/
+│   │   └── site.css
+│   ├── js/
+│   │   └── site.js
+│   └── images/
+│       └── foods/
+│
+├── appsettings.json
+├── Program.cs
+├── FastFoodStore.csproj
+└── README.md
+```
+```
+FastFoodStore/
+│
 ├── FastFoodStore.Web/                  # Giao diện người dùng (UI)
 │   ├── Controllers/
 │   │   ├── HomeController.cs
