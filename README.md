@@ -32,6 +32,106 @@ FastFoodStoreOnline/
 │   ├── MenuController.cs
 │   ├── CartController.cs
 │   ├── CheckoutController.cs
+│   └── AccountController.cs       <-- xử lý đăng nhập/đăng ký/thông tin cá nhân
+│
+├── Views/
+│   ├── Home/
+│   │   └── Index.cshtml
+│   ├── Menu/
+│   │   ├── Index.cshtml
+│   │   └── Details.cshtml
+│   ├── Cart/
+│   │   └── Index.cshtml
+│   ├── Checkout/
+│   │   ├── Index.cshtml
+│   │   └── Success.cshtml
+│   └── Account/
+│       ├── Login.cshtml           <-- giao diện đăng nhập
+│       ├── Register.cshtml        <-- giao diện đăng ký
+│       └── Profile.cshtml         <-- thông tin cá nhân (cập nhật tên, địa chỉ, email...)
+│
+├── Models/
+│   ├── Food.cs
+│   ├── Category.cs
+│   ├── Order.cs
+│   ├── OrderDetail.cs
+│   ├── ShoppingCartItem.cs
+│   └── ApplicationUser.cs
+│
+├── Services/
+│   ├── IFoodService.cs
+│   ├── FoodService.cs
+│   ├── IOrderService.cs
+│   ├── OrderService.cs
+│   ├── IUserService.cs
+│   └── UserService.cs
+│
+├── Data/
+│   ├── ApplicationDbContext.cs
+│   └── DbInitializer.cs
+│
+├── ViewModels/
+│   ├── ShoppingCartVM.cs
+│   ├── CheckoutVM.cs
+│   ├── MenuItemVM.cs
+│   ├── LoginViewModel.cs         <-- xử lý đăng nhập
+│   ├── RegisterViewModel.cs      <-- xử lý đăng ký
+│   └── ProfileViewModel.cs       <-- thông tin cá nhân
+│
+├── Utilities/
+│   ├── Constants.cs
+│   └── SD.cs
+│
+├── wwwroot/
+│   ├── admin/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── img/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│       ├── foods/
+│       └── banners/
+│
+├── Migrations/
+│
+├── appsettings.json
+└── Program.cs
+```
+```
+FastFoodStoreOnline/
+│
+├── Areas/
+│   └── Admin/
+│       ├── Controllers/
+│       │   ├── DashboardController.cs
+│       │   ├── FoodController.cs
+│       │   ├── OrderController.cs
+│       │   └── UserController.cs
+│       ├── Views/
+│       │   ├── Dashboard/
+│       │   │   └── Index.cshtml
+│       │   ├── Food/
+│       │   │   ├── Index.cshtml
+│       │   │   ├── Create.cshtml
+│       │   │   ├── Edit.cshtml
+│       │   │   └── Delete.cshtml
+│       │   ├── Order/
+│       │   │   ├── Index.cshtml
+│       │   │   └── Details.cshtml
+│       │   └── User/
+│       │       ├── Index.cshtml
+│       │       └── Edit.cshtml
+│       └── ViewModels/
+│           ├── FoodVM.cs
+│           ├── OrderVM.cs
+│           └── UserVM.cs
+│
+├── Controllers/
+│   ├── HomeController.cs
+│   ├── MenuController.cs
+│   ├── CartController.cs
+│   ├── CheckoutController.cs
 │   └── AccountController.cs
 │
 ├── Models/
